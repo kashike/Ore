@@ -56,6 +56,10 @@ GET     /:author/:name/channels/:channel/delete                 @controllers.Pro
 # Discussion
 GET     /:author/:name/dicuss                                   @controllers.Projects.showDiscussion(author, name)
 
+# External Links
+GET     /:author/:name/source                                   @controllers.Projects.showSource(author, name)
+GET     /:author/:name/issues                                   @controllers.Projects.showIssues(author, name)
+
 # Admin
 GET     /:author/:name/manage                                   @controllers.Projects.showManager(author, name)
 POST    /:author/:name/manage/save                              @controllers.Projects.save(author, name)

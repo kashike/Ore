@@ -75,6 +75,20 @@ Base template for Project overview.
                         <i class="fa fa-flag"></i> @messages("project.flag")
                     </button>
                 }
+                @if(project.getSource.isDefined) {
+                    <a href="@routes.Projects.showSource(project.owner, project.getName)"
+                    title="@messages("project.source.desc")" data-toggle="tooltip"
+                    data-placement="bottom" class="btn btn-default">
+                        <i class="fa fa-download"></i> @messages("project.source.name")
+                    </a>
+                }
+                @if(project.getIssues.isDefined) {
+                    <a href="@routes.Projects.showIssues(project.owner, project.getName)"
+                    title="@messages("project.issues.desc")" data-toggle="tooltip"
+                    data-placement="bottom" class="btn btn-default">
+                        <i class="fa fa-download"></i> @messages("project.issues.name")
+                    </a>
+                }
                 <a href="@routes.Projects.downloadRecommendedVersion(project.owner, project.getName)"
                    title="Download the latest recommended version" data-toggle="tooltip"
                    data-placement="bottom" class="btn btn-primary">

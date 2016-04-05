@@ -28,10 +28,12 @@ class ProjectTable(tag: Tag) extends Table[Project](tag, "projects") {
   def views                 =   column[Int]("views", O.Default(0))
   def downloads             =   column[Int]("downloads", O.Default(0))
   def starred               =   column[Int]("starred", O.Default(0))
+  def source                =   column[String]("source")
+  def issues                =   column[String]("issues")
 
   override def * = (id.?, createdAt.?, pluginId, name, ownerName,
                     authors, homepage.?, recommendedVersionId.?,
-                    categoryId, views, downloads, starred) <> ((Project.apply _).tupled,
+                    categoryId, views, downloads, starred, source.?, issues.?) <> ((Project.apply _).tupled,
                     Project.unapply)
 
 }

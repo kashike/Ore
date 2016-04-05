@@ -741,4 +741,36 @@ class Projects @Inject()(override val messagesApi: MessagesApi) extends Controll
     }))
   }
 
+  /**
+    * Shows the project source.
+    *
+    * @param author   Project owner
+    * @param name     Project name
+    * @return         Project source
+    */
+  def showSource(author: String, name: String) = Action { implicit request =>
+    withProject(author, name, project => {
+      project.getSource match {
+        case None => NotFound
+        case Some(source) => Redirect(source)
+      }
+    })
+  }
+
+  /**
+    * Shows the project issues.
+    *
+    * @param author   Project owner
+    * @param name     Project name
+    * @return         Project issues
+    */
+  def showIssues(author: String, name: String) = Action { implicit request =>
+    withProject(author, name, project => {
+      project.getIssues match {
+        case None => NotFound
+        case Some(issues) => Redirect(issues)
+      }
+    })
+  }
+
 }

@@ -36,6 +36,10 @@ project.name                    =   Name
 project.create                  =   New Project
 project.owner                   =   Owner
 project.rename                  =   Rename
+project.source.name             =   Source
+project.source.desc             =   Go to the source repository of this project
+project.issues.name             =   Issues
+project.issues.desc             =   Go to the issue tracker for this project
 
 project.discuss                 =   Discuss
 project.docs                    =   Docs

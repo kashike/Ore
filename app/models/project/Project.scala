@@ -44,12 +44,15 @@ import scala.util.{Failure, Success, Try}
   * @param views                  How many times this project has been views
   * @param downloads              How many times this project has been downloaded in total
   * @param starred                How many times this project has been starred
+  * @param source                 A link to the source repository
+  * @param issues                 A link to the issue tracker
   */
 case class Project(id: Option[Int], private var createdAt: Option[Timestamp], pluginId: String,
                    private var name: String, owner: String, authors: List[String],
                    homepage: Option[String], private var recommendedVersionId: Option[Int],
                    private var categoryId: Int = -1, private var views: Int, private var downloads: Int,
-                   private var starred: Int) {
+                   private var starred: Int, private var source: Option[String],
+                   private var issues: Option[String]) {
 
   private lazy val dateFormat = new SimpleDateFormat("MM-dd-yyyy")
 
@@ -337,6 +340,20 @@ case class Project(id: Option[Int], private var createdAt: Option[Timestamp], pl
         FileUtils.deleteDirectory(Pages.getDocsDir(this.owner, this.name).toFile)
     }
   }
+
+  /**
+    * Returns the source link.
+    *
+    * @return Source link
+    */
+  def getSource: Option[String] = this.source
+
+  /**
+    * Returns the issues link.
+    *
+    * @return Issues link
+    */
+  def getIssues: Option[String] = this.issues
 
   /**
     * Returns a presentable date string of this version's creation date.
